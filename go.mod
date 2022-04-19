@@ -102,10 +102,10 @@ require (
 	github.com/containerd/cgroups v1.0.2
 	github.com/containerd/containerd v1.5.10
 	github.com/containerd/typeurl v1.0.2
-	github.com/containernetworking/cni v0.8.1
+	github.com/containernetworking/cni v1.0.1 // indirect
 	github.com/coreos/go-semver v0.3.0
 	github.com/coreos/go-systemd v0.0.0-20190719114852-fd7a80b32e1f
-	github.com/cri-o/ocicni v0.2.0
+	github.com/cri-o/ocicni v0.3.0
 	github.com/cyphar/filepath-securejoin v0.2.3
 	github.com/davecgh/go-spew v1.1.1
 	github.com/docker/docker v17.12.0-ce-rc1.0.20200916142827-bd33bbf0497b+incompatible
@@ -168,7 +168,7 @@ require (
 	github.com/shirou/gopsutil/v3 v3.22.3
 	github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4
 	github.com/skydive-project/go-debouncer v1.0.0
-	github.com/spf13/afero v1.6.0
+	github.com/spf13/afero v1.8.2
 	github.com/spf13/cobra v1.4.0
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.7.1
@@ -191,7 +191,7 @@ require (
 	go4.org/intern v0.0.0-20220301175310-a089fc204883
 	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871 // indirect
 	golang.org/x/mobile v0.0.0-20201217150744-e6ae53a27f4f
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20220317061510-51cd9980dadf
 	golang.org/x/text v0.3.7
@@ -222,7 +222,7 @@ require (
 
 require (
 	cloud.google.com/go v0.99.0 // indirect
-	cloud.google.com/go/storage v1.12.0 // indirect
+	cloud.google.com/go/storage v1.14.0 // indirect
 	code.cloudfoundry.org/cfhttp/v2 v2.0.0 // indirect
 	code.cloudfoundry.org/clock v1.0.0 // indirect
 	code.cloudfoundry.org/consuladapter v0.0.0-20200131002136-ac1daf48ba97 // indirect
@@ -419,7 +419,10 @@ require (
 
 require github.com/docker/libnetwork v0.5.6
 
-require github.com/Sirupsen/logrus v1.0.6 // indirect
+require (
+	github.com/Sirupsen/logrus v1.0.6 // indirect
+	github.com/containernetworking/plugins v1.1.1 // indirect
+)
 
 // Fixing a CVE on a transitive dep of k8s/etcd, should be cleaned-up once k8s.io/apiserver dep is removed (but double-check with `go mod why` that no other dep pulls it)
 replace github.com/dgrijalva/jwt-go => github.com/golang-jwt/jwt v3.2.1+incompatible
