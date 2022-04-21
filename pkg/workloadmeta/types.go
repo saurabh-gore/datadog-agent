@@ -75,6 +75,10 @@ type Store interface {
 
 	// Dump lists the content of the store, for debugging purposes.
 	Dump(verbose bool) WorkloadDumpResponse
+
+	// WaitForCollectors waits until all collectors either start collecting
+	// data, are removed due to being disabled, or ctx is cancelled.
+	WaitForCollectors(ctx context.Context) error
 }
 
 // Kind is the kind of an entity.
@@ -432,6 +436,7 @@ type KubernetesPod struct {
 	QOSClass                   string
 	KubeServices               []string
 	NamespaceLabels            map[string]string
+	HostNetwork                bool
 }
 
 // GetID implements Entity#GetID.

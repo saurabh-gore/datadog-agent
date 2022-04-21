@@ -41,7 +41,7 @@ func init() {
 	})
 }
 
-func (c *collector) Start(_ context.Context, store workloadmeta.Store) error {
+func (c *collector) Start(ctx context.Context, store workloadmeta.Store) error {
 	if !config.IsFeaturePresent(config.Kubernetes) {
 		return errors.NewDisabled(componentName, "Agent is not running on Kubernetes")
 	}
@@ -54,6 +54,11 @@ func (c *collector) Start(_ context.Context, store workloadmeta.Store) error {
 	c.watcher, err = kubelet.NewPodWatcher(expireFreq)
 	if err != nil {
 		return err
+	}
+
+	err = c.Pull(ctx)
+	if err != nil {
+		log.Errorf("unable to pull pods at collector startup: %s", err)
 	}
 
 	return nil
@@ -132,6 +137,7 @@ func (c *collector) parsePods(pods []*kubelet.Pod) []workloadmeta.CollectorEvent
 			IP:                         pod.Status.PodIP,
 			PriorityClass:              pod.Spec.PriorityClassName,
 			QOSClass:                   pod.Status.QOSClass,
+			HostNetwork:                pod.Spec.HostNetwork,
 		}
 
 		events = append(events, containerEvents...)
