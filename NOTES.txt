@@ -4,6 +4,8 @@ cca_use_bare_configs is false, the behavior does not change.
 
 When the cca_use_bare_configs setting is true:
 
+* AD no longer sends service configs (FIXME's)
+
 * [DONE] AD logs scheduler does not send services
 
 * [DONE] AD logs scheduler recognizes these and creates sources if CCA enabled
