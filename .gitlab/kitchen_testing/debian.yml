@@ -43,6 +43,7 @@
   variables:
     KITCHEN_OSVERS: "debian-10"
     DEFAULT_KITCHEN_OSVERS: "debian-10"
+    KITCHEN_USE_CUSTOM_ARM_CHEF: "true"
   extends:
     - .kitchen_agent_a6
     - .kitchen_os_debian
@@ -53,6 +54,7 @@
   variables:
     KITCHEN_OSVERS: "debian-10"
     DEFAULT_KITCHEN_OSVERS: "debian-10"
+    KITCHEN_USE_CUSTOM_ARM_CHEF: "true"
   extends:
     - .kitchen_agent_a7
     - .kitchen_os_debian
