@@ -42,9 +42,7 @@ import (
 )
 
 func dnsSupported(t *testing.T) bool {
-	currKernelVersion, err := kernel.HostVersion()
-	require.NoError(t, err)
-	return currKernelVersion >= kernel.VersionCode(4, 1, 0)
+	return true
 }
 
 func httpSupported(t *testing.T) bool {
